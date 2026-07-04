@@ -1,38 +1,38 @@
 // 统一入口：兼容 Cloudflare Workers 和 Pages Functions
-export default {
-  async fetch(request, env, ctx) {
+导出 默认 {
+  异步 获取(请求, 环境, 上下文) {
     // Pages Functions 中 KV 需要从 env 中获取
-    if (env && env.KV && typeof globalThis.KV === 'undefined') {
+    如果 (环境 && 环境.KV && 类型 全局This.KV === '未定义') {
       globalThis.KV = env.KV
     }
     
-    return handleRequest(request)
+    返回 处理请求(请求)
   }
 }
 
 // 常量配置（避免重复创建）
-const CORS_HEADERS = {
+常量 CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  'Access-Control-Max-Age': '86400',
+  'Access-Control-Allow-Methods'：'GET, POST, PUT, DELETE, OPTIONS'，
+  'Access-Control-Allow-Headers'：'Content-Type, Authorization'，
+  'Access-Control-Max-Age'：'86400'，
 }
 
-const EXCLUDE_HEADERS = new Set([
-  'content-encoding', 'content-length', 'transfer-encoding',
+常量 排除头文件 = 新的 集合([
+  '内容编码', '内容长度', '传输编码',
   'connection', 'keep-alive', 'set-cookie', 'set-cookie2'
 ])
 
-const JSON_SOURCES = {
-  'jin18': 'https://raw.githubusercontent.com/hafrey1/LunaTV-config/refs/heads/main/jin18.json',
-  'jingjian': 'https://raw.githubusercontent.com/hafrey1/LunaTV-config/refs/heads/main/jingjian.json',
-  'full': 'https://raw.githubusercontent.com/hafrey1/LunaTV-config/refs/heads/main/LunaTV-config.json'
+常量 JSON_SOURCES = {
+  'jin18': 'https://raw.githubusercontent.com/jek2004/LunaTV-config/refs/heads/main/jin18.json',
+  'jingjian': 'https://raw.githubusercontent.com/jek2004/LunaTV-config/refs/heads/main/jingjian.json',
+  'full'：'https://raw.githubusercontent.com/jek2004/LunaTV-config/refs/heads/main/LunaTV-config.json'
 }
 
-const FORMAT_CONFIG = {
-  '0': { proxy: false, base58: false },
+常量 格式配置 = {
+  '0'：{ 代理： false， base58： false }，
   'raw': { proxy: false, base58: false },
-  '1': { proxy: true, base58: false },
+  '1': { 代理: 真, 基础58: 假 },
   'proxy': { proxy: true, base58: false },
   '2': { proxy: false, base58: true },
   'base58': { proxy: false, base58: true },
