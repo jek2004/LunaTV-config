@@ -208,10 +208,10 @@
       "api": "https://m3u8.apiyhzy.com/api.php/provide/vod",
       "detail": "https://yhzy.cc"
     },
-    "91md.me": {
-      "name": "🔞麻豆视频",
-      "api": "https://91md.me/api.php/provide/vod",
-      "detail": "https://91md.me"
+ "suonizy.cc": {
+      "name": "索尼资源",
+      "api": "https://suoniapi.com/api.php/provide/vod/?ac=list",
+      "detail": "https://suonizy.cc/"
     },
     "lbapiby.com": {
       "name": "🔞--AIvin-",
